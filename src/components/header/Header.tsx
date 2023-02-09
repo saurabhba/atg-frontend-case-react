@@ -13,7 +13,7 @@ export const Header = () => {
           />
         </a>
       </div>
-      <div className="h-screen bg-white px-4 py-2">
+      <div className="h-screen bg-white py-2">
         <Outlet />
       </div>
     </div>
