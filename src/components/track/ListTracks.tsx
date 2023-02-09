@@ -23,11 +23,11 @@ export const ListTracks: FC<ListTracksProps> = ({ tracks, time, races }) => {
     <>
       {tracks.map((track) => {
         return (
-          <Accordion expanded key={track.id}>
+          <Accordion key={track.id}>
             <AccordionSummary
               expandIcon={<Icon>expand_more</Icon>}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
+              aria-controls={`panel-header-${track.id}`}
+              id={`panel-header-${track.id}`}
             >
               <Typography variant="h5">
                 {track.name} - {time}

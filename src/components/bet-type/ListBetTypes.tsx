@@ -43,7 +43,7 @@ export const ListBetTypes = () => {
 
   return (
     <>
-      <div className="flex justify-start items-center border-b">
+      <div className="flex justify-start items-center border-b px-3">
         <div className="w-24 text-gray-400 text-sm">Select Bet</div>
         <div>
           <Tabs

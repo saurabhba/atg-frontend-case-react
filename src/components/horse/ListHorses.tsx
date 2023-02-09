@@ -1,4 +1,3 @@
-import { Icon } from "@mui/material";
 import { FC } from "react";
 import { Start } from "../race/type";
 import { DisplayHorse } from "./DisplayHorse";
@@ -8,11 +7,11 @@ interface ListHorsesProps {
 }
 export const ListHorses: FC<ListHorsesProps> = ({ starts }) => {
   return (
-    <table className="table-fixed min-w-full">
+    <table className="table-fixed w-full">
       <thead>
         <tr>
           <th className="w-10"></th>
-          <th className="w-16"></th>
+          <th className="w-12"></th>
           <th>Horse</th>
           <th>Driver</th>
         </tr>

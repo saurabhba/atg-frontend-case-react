@@ -41,11 +41,11 @@ export const DisplayBet = () => {
 
     return (
       <>
-        <div className="flex justify-start items-center">
-          <div className="w-24 text-gray-400 text-sm">Select Date</div>
+        <div className="flex justify-start items-center border-b pb-3">
+          <div className="w-28 text-gray-400 text-sm px-3">Select Date</div>
           <div className="flex-1 md:flex-none flex justify-center items-center md:w-96">
             <button
-              className="leading-none border-r border-l border-gray-400 px-3 text-gray-600 hover:text-blue-600 disabled:text-gray-400 disabled:cursor-not-allowed"
+              className="leading-none border-r border-l border-gray-400 px-3 text-gray-600 hover:text-blue-600 disabled:text-gray-300 disabled:cursor-not-allowed"
               disabled={gameIndex === 0}
               onClick={() => setGameIndex((index) => index - 1)}
             >
@@ -56,7 +56,7 @@ export const DisplayBet = () => {
               {moment(data[gameIndex].startTime).format("dddd DD MMM")}
             </div>
             <button
-              className="leading-none border-l border-r border-gray-400 px-3 text-gray-600 hover:text-blue-600 disabled:text-gray-400 disabled:cursor-not-allowed"
+              className="leading-none border-l border-r border-gray-400 px-3 text-gray-600 hover:text-blue-600 disabled:text-gray-300 disabled:cursor-not-allowed"
               disabled={gameIndex === data.length - 1}
               onClick={() => setGameIndex((index) => index + 1)}
             >

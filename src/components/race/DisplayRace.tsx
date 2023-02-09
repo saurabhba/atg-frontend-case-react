@@ -10,10 +10,12 @@ interface DisplayRaceProps {
 export const DisplayRace: FC<DisplayRaceProps> = ({ race }) => {
   return (
     <>
-      <div className="py-4">
+      <div className="pb-2">
         {race.number} - {race.name} {moment(race.startTime).format("HH:MM")}
       </div>
-      <ListHorses starts={race.starts} />
+      <div className="pb-6">
+        <ListHorses starts={race.starts} />
+      </div>
     </>
   );
 };
