@@ -30,7 +30,7 @@ export const DisplayBet = () => {
     };
 
     fetchGameData();
-  }, [index, gameIndex]);
+  }, [index, gameIndex, upcoming, results]);
 
   const renderBet = () => {
     const data = index === 0 ? upcoming : results;
@@ -66,7 +66,7 @@ export const DisplayBet = () => {
         </div>
         <ListTracks
           tracks={data[gameIndex].tracks}
-          time={moment(data[gameIndex].startTime).format("HH:mm")}
+          time={data[gameIndex].startTime}
           races={gameData.races}
         />
       </>

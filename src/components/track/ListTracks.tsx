@@ -29,8 +29,8 @@ export const ListTracks: FC<ListTracksProps> = ({ tracks, time, races }) => {
               aria-controls={`panel-header-${track.id}`}
               id={`panel-header-${track.id}`}
             >
-              <Typography variant="h5">
-                {track.name} - {time}
+              <Typography variant="h5" data-testid="track">
+                {track.name} - {moment(time).format("HH:mm")}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>

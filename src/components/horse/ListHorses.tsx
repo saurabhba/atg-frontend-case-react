@@ -7,7 +7,7 @@ interface ListHorsesProps {
 }
 export const ListHorses: FC<ListHorsesProps> = ({ starts }) => {
   return (
-    <table className="table-fixed w-full">
+    <table className="table-fixed w-full" data-testid="list-horses">
       <thead>
         <tr>
           <th className="w-10"></th>

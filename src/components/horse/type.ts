@@ -1,4 +1,5 @@
 export interface Horse {
+  id: number;
   name: string;
   owner: Owner;
   trainer: Person;
@@ -10,7 +11,7 @@ export interface Owner {
 }
 
 export interface Person {
-  id: string;
+  id: number;
   firstName: string;
   lastName: string;
 }

@@ -9,13 +9,13 @@ interface DisplayRaceProps {
 
 export const DisplayRace: FC<DisplayRaceProps> = ({ race }) => {
   return (
-    <>
+    <div data-testid="race">
       <div className="pb-2">
         {race.number} - {race.name} {moment(race.startTime).format("HH:MM")}
       </div>
       <div className="pb-6">
         <ListHorses starts={race.starts} />
       </div>
-    </>
+    </div>
   );
 };

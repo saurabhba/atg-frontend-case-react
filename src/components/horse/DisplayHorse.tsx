@@ -15,26 +15,34 @@ export const DisplayHorse: FC<DisplayHorseProps> = ({ start }) => {
         className="border hover:bg-gray-100 hover:cursor-pointer"
         key={start.number}
         onClick={() => setExapnd(!expand)}
+        data-testid="horse-detail"
       >
-        <td className="text-xs border-r p-3">
+        <td className="text-xs border-r p-3" data-testid="expand">
           <Icon>{`${expand ? "expand_less" : "expand_more"}`}</Icon>
         </td>
-        <td className="border-r p-3">{start.number}</td>
-        <td className="border-r p-3">{start.horse.name}</td>
-        <td className="p-3">{`${start.driver.firstName} ${start.driver.lastName}`}</td>
+        <td className="border-r p-3" data-testid="start-number">
+          {start.number}
+        </td>
+        <td className="border-r p-3" data-testid="horse-name">
+          {start.horse.name}
+        </td>
+        <td
+          className="p-3"
+          data-testid="driver-name"
+        >{`${start.driver.firstName} ${start.driver.lastName}`}</td>
       </tr>
       {expand && (
-        <tr className="border">
+        <tr className="border" data-testid="horse-detail-extra">
           <td colSpan={4} className="px-4">
             <table className="text-gray-400">
               <tbody>
                 <tr>
                   <td className="p-2">Trainer:</td>
-                  <td>{`${start.horse.trainer.firstName} ${start.horse.trainer.lastName}`}</td>
+                  <td data-testid="trainer-name">{`${start.horse.trainer.firstName} ${start.horse.trainer.lastName}`}</td>
                 </tr>
                 <tr>
                   <td className="p-2">Owner:</td>
-                  <td>{`${start.horse.owner.name} ${start.horse.trainer.lastName}`}</td>
+                  <td data-testid="owner-name">{`${start.horse.owner.name} ${start.horse.trainer.lastName}`}</td>
                 </tr>
               </tbody>
             </table>
