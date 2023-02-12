@@ -26,6 +26,7 @@ export const DisplayBet = () => {
         index === 0 ? upcoming[gameIndex].id : results[gameIndex].id;
 
       const { data } = await atg.get<Game>(`/games/${gameId}`);
+
       setGameData(data);
     };
 
@@ -40,7 +41,7 @@ export const DisplayBet = () => {
     }
 
     return (
-      <>
+      <div data-testid={`${index === 0 ? "upcoming" : "result"}`}>
         <div className="flex justify-start items-center border-b pb-3">
           <div className="w-28 text-gray-400 text-sm px-3">Select Date</div>
           <div className="flex-1 md:flex-none flex justify-center items-center md:w-96">
@@ -69,29 +70,31 @@ export const DisplayBet = () => {
           time={data[gameIndex].startTime}
           races={gameData.races}
         />
-      </>
+      </div>
     );
   };
 
   return (
     <>
       <div className="flex items-center justify-center my-4 bg-purple-500 text-white uppercase">
-        <div
+        <button
           className={`flex flex-1 items-center justify-center border-r h-12 ${
             index === 0 ? active : ""
           }`}
           onClick={() => setIndex(0)}
+          data-testid="upcoming-button"
         >
           Upcoming
-        </div>
-        <div
+        </button>
+        <button
           className={`flex flex-1 items-center justify-center border-r h-12 ${
             index === 1 ? active : ""
           }`}
           onClick={() => setIndex(1)}
+          data-testid="result-button"
         >
           Result
-        </div>
+        </button>
       </div>
       {renderBet()}
     </>
