@@ -23,7 +23,6 @@ export const DisplayBet = () => {
 
   useEffect(() => {
     const fetchGameData = async () => {
-      console.log("fetching data");
       try {
         setLoading(true);
         let gameId = "";
@@ -49,9 +48,6 @@ export const DisplayBet = () => {
 
   const renderBet = () => {
     const data = index === 0 ? upcoming : results;
-
-    console.log("data", data);
-    console.log("gameData", gameData);
 
     if (!data) {
       return <div>No data found</div>;

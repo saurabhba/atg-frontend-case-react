@@ -6,7 +6,7 @@ import { act } from "react-dom/test-utils";
 
 jest.mock("../../../api/atg");
 
-const upcoming_data = {
+const data = {
   "@type": ".Game",
   id: "V86_2023-02-15_40_1",
   status: "bettable",
@@ -660,7 +660,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("<DisplayBet />", () => {
   beforeEach(() => {
-    jest.spyOn(atg, "get").mockResolvedValue({ upcoming_data });
+    jest.spyOn(atg, "get").mockResolvedValue({ data });
   });
 
   afterEach(() => {
