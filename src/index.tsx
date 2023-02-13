@@ -1,22 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {
-  BrowserRouter,
   createBrowserRouter,
   createRoutesFromElements,
-  Outlet,
   Params,
   Route,
   RouterProvider,
-  Routes,
 } from "react-router-dom";
 import { Header } from "./components/header";
 import { ListBetTypes } from "./components/bet-type";
 import atg from "./api/atg";
-import { ListTracks } from "./components/track";
 import { DisplayBet } from "./components/bet";
 
 const root = ReactDOM.createRoot(

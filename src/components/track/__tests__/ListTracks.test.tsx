@@ -52,12 +52,16 @@ describe("<ListTracks />", () => {
     },
   ];
 
-  it("renders without crash", () => {
-    render(<ListTracks tracks={tracks} time={time} races={races} />);
+  it("renders without crash", async () => {
+    render(
+      <ListTracks tracks={tracks} time={time} races={races} loading={false} />
+    );
   });
 
   it("displays track name and start time", () => {
-    render(<ListTracks tracks={tracks} time={time} races={races} />);
+    render(
+      <ListTracks tracks={tracks} time={time} races={races} loading={false} />
+    );
     expect(screen.queryAllByTestId("track").length).toEqual(tracks.length);
     expect(screen.queryAllByTestId("track")[0]).toHaveTextContent(
       `${tracks[0].name} - ${moment(time).format("HH:mm")}`
@@ -65,7 +69,9 @@ describe("<ListTracks />", () => {
   });
 
   it("display races", () => {
-    render(<ListTracks tracks={tracks} time={time} races={races} />);
+    render(
+      <ListTracks tracks={tracks} time={time} races={races} loading={false} />
+    );
     expect(screen.queryAllByTestId("race").length).toEqual(races.length);
   });
 });

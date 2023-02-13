@@ -1,19 +1,12 @@
 import "react-router-dom";
-import {
-  cleanup,
-  findByText,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { DisplayBet } from "../DisplayBet";
 import atg from "../../../api/atg";
 import { act } from "react-dom/test-utils";
 
 jest.mock("../../../api/atg");
 
-const data = {
+const upcoming_data = {
   "@type": ".Game",
   id: "V86_2023-02-15_40_1",
   status: "bettable",
@@ -667,7 +660,7 @@ jest.mock("react-router-dom", () => ({
 
 describe("<DisplayBet />", () => {
   beforeEach(() => {
-    jest.spyOn(atg, "get").mockResolvedValue({ data });
+    jest.spyOn(atg, "get").mockResolvedValue({ upcoming_data });
   });
 
   afterEach(() => {
@@ -684,14 +677,16 @@ describe("<DisplayBet />", () => {
     expect(screen.getByTestId("upcoming")).toBeInTheDocument();
     expect(screen.queryByTestId("result")).not.toBeInTheDocument();
     expect(atg.get).toHaveBeenCalledTimes(1);
+    expect(atg.get).toHaveBeenCalledWith(`/games/${betData.upcoming[0].id}`);
   });
 
   it(`displays result
       When user clicks on result button`, async () => {
     await act(() => render(<DisplayBet />));
-    fireEvent.click(screen.getByTestId("result-button"));
+    await act(() => fireEvent.click(screen.getByTestId("result-button")));
 
     expect(atg.get).toHaveBeenCalledTimes(2);
+    expect(atg.get).toHaveBeenCalledWith(`/games/${betData.upcoming[0].id}`);
     expect(atg.get).toHaveBeenCalledWith(`/games/${betData.results[0].id}`);
   });
 });

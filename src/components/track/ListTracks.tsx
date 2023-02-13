@@ -3,6 +3,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Icon,
+  Skeleton,
   Tabs,
   Typography,
 } from "@mui/material";
@@ -16,9 +17,15 @@ interface ListTracksProps {
   tracks: Track[];
   time: string;
   races: Race[];
+  loading: boolean;
 }
 
-export const ListTracks: FC<ListTracksProps> = ({ tracks, time, races }) => {
+export const ListTracks: FC<ListTracksProps> = ({
+  tracks,
+  time,
+  races,
+  loading,
+}) => {
   return (
     <>
       {tracks.map((track) => {
@@ -34,7 +41,18 @@ export const ListTracks: FC<ListTracksProps> = ({ tracks, time, races }) => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {races &&
+              {loading && (
+                <>
+                  <Skeleton></Skeleton>
+                  <Skeleton></Skeleton>
+                  <Skeleton></Skeleton>
+                  <Skeleton></Skeleton>
+                  <Skeleton></Skeleton>
+                  <Skeleton></Skeleton>
+                </>
+              )}
+              {!loading &&
+                races &&
                 races
                   .filter((race) => race.track.id === track.id)
                   .map((race) => {

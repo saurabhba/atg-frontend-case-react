@@ -11,6 +11,7 @@ export const DisplayBet = () => {
   const [index, setIndex] = useState(0);
   const [gameIndex, setGameIndex] = useState(0);
   const [gameData, setGameData] = useState({} as Game);
+  const [loading, setLoading] = useState(false);
 
   const active = "bg-purple-700 font-semibold";
 
@@ -22,12 +23,25 @@ export const DisplayBet = () => {
 
   useEffect(() => {
     const fetchGameData = async () => {
-      const gameId =
-        index === 0 ? upcoming[gameIndex].id : results[gameIndex].id;
+      console.log("fetching data");
+      try {
+        setLoading(true);
+        let gameId = "";
 
-      const { data } = await atg.get<Game>(`/games/${gameId}`);
-
-      setGameData(data);
+        if (index === 0 && upcoming) {
+          gameId = upcoming[gameIndex].id;
+        } else if (index === 1 && results) {
+          gameId = results[gameIndex].id;
+        }
+        if (gameId !== "") {
+          const { data } = await atg.get<Game>(`/games/${gameId}`);
+          setGameData(data);
+        }
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchGameData();
@@ -35,6 +49,9 @@ export const DisplayBet = () => {
 
   const renderBet = () => {
     const data = index === 0 ? upcoming : results;
+
+    console.log("data", data);
+    console.log("gameData", gameData);
 
     if (!data) {
       return <div>No data found</div>;
@@ -69,6 +86,7 @@ export const DisplayBet = () => {
           tracks={data[gameIndex].tracks}
           time={data[gameIndex].startTime}
           races={gameData.races}
+          loading={loading}
         />
       </div>
     );

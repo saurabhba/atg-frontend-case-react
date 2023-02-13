@@ -1,13 +1,6 @@
 import { Tab, Tabs } from "@mui/material";
 import { useEffect, useState } from "react";
-import {
-  Link,
-  Outlet,
-  Params,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
-import atg from "../../api/atg";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { BetType } from "./types";
 
 export const ListBetTypes = () => {
@@ -57,6 +50,7 @@ export const ListBetTypes = () => {
                   to={betType.to}
                   component={Link}
                   key={betType.label}
+                  data-testid="bet-type"
                 />
               );
             })}
