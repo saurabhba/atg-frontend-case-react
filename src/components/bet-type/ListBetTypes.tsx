@@ -28,11 +28,11 @@ export const ListBetTypes = () => {
       (betType) => betType.to === location.pathname
     );
     if (index > 0) setSelectedBetType(index);
-  }, [location.pathname]);
+  }, [location.pathname, BET_TYPE_DATA]);
 
   useEffect(() => {
     if (location.pathname === "/") navigate(BET_TYPE_DATA[selectedBetType].to);
-  }, [location.pathname]);
+  }, [location.pathname, BET_TYPE_DATA]);
 
   return (
     <>
