@@ -35,7 +35,7 @@ export const ListBetTypes = () => {
 
   useEffect(() => {
     if (location.pathname === "/") navigate(BET_TYPE_DATA[selectedBetType].to);
-  }, [location.pathname, BET_TYPE_DATA, navigate]);
+  }, [location.pathname, BET_TYPE_DATA, navigate, selectedBetType]);
 
   return (
     <>
